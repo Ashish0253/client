@@ -16,9 +16,9 @@ export default function SearchBar(props) {
     return sortBy === sortByOption ? "active" : "";
   }
 
-  function handleSortByChange(sortByOption) {
-    setSortBy(sortByOption);
-  }
+  // function handleSortByChange(sortByOption) {
+  //   setSortBy(sortByOption);
+  // }
 
   function handleTermChange(event) {
     setTerm(event.target.value);

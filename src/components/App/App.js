@@ -11,7 +11,7 @@ export default function App() {
     var data = { term, location, sortBy };
 
     const local = "http://localhost:9000/.netlify/functions/server";
-    const host = "https://ashishkaserver.netlify.app/.netlify/functions/server";
+    // const host = "https://ashishkaserver.netlify.app/.netlify/functions/server";
 
     await fetch(local + "/yelp", {
       method: "POST",
