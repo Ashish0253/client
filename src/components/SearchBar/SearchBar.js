@@ -12,14 +12,6 @@ export default function SearchBar(props) {
     "Most Reviewed": "review_count",
   };
 
-  function getSortByClass(sortByOption) {
-    return sortBy === sortByOption ? "active" : "";
-  }
-
-  function handleSortByChange(sortByOption) {
-    setSortBy(sortByOption);
-  }
-
   function handleTermChange(event) {
     setTerm(event.target.value);
   }
@@ -35,6 +27,14 @@ export default function SearchBar(props) {
   }
 
   function RenderSortByOptions() {
+    function getSortByClass(sortByOption) {
+      return sortBy === sortByOption ? "active" : "";
+    }
+
+    function handleSortByChange(sortByOption) {
+      setSortBy(sortByOption);
+    }
+
     return Object.keys(sortByOptions).map((sortByOption) => {
       let sortByOptionValue = sortByOptions[sortByOption];
 
@@ -42,7 +42,7 @@ export default function SearchBar(props) {
         <li
           key={sortByOptionValue}
           className={getSortByClass(sortByOptionValue)}
-          // onClick={setSortBy(sortByOptionValue)}
+          onClick={handleSortByChange(sortByOptionValue)}
         >
           {sortByOption}
         </li>
