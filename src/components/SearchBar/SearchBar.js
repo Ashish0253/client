@@ -16,9 +16,9 @@ export default function SearchBar(props) {
     return sortBy === sortByOption ? "active" : "";
   }
 
-  // function handleSortByChange(sortByOption) {
-  //   setSortBy(sortByOption);
-  // }
+  function handleSortByChange(sortByOption) {
+    setSortBy(sortByOption);
+  }
 
   function handleTermChange(event) {
     setTerm(event.target.value);
@@ -42,7 +42,7 @@ export default function SearchBar(props) {
         <li
           key={sortByOptionValue}
           className={getSortByClass(sortByOptionValue)}
-          // onClick={handleSortByChange(sortByOptionValue)}
+          // onClick={setSortBy(sortByOptionValue)}
         >
           {sortByOption}
         </li>
@@ -53,11 +53,9 @@ export default function SearchBar(props) {
   return (
     <div className="SearchBar">
       <div className="SearchBar-sort-options">
-        <React.StrictMode>
-          <ul>
-            <RenderSortByOptions />
-          </ul>
-        </React.StrictMode>
+        <ul>
+          <RenderSortByOptions />
+        </ul>
       </div>
       <div className="SearchBar-fields">
         <input onChange={handleTermChange} placeholder="Search Businesses" />

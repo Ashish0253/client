@@ -3,6 +3,8 @@ import BusinessList from "../BusinessList/BusinessList";
 import SearchBar from "../SearchBar/SearchBar";
 import "./App.css";
 
+const fetch = require("cross-fetch");
+
 export default function App() {
   const [returnedBusinesses, setReturnedBusinesses] = useState([]);
   const [click, setClick] = useState(0);
@@ -10,21 +12,36 @@ export default function App() {
   async function searchYelp(term, location, sortBy) {
     var data = { term, location, sortBy };
 
-    const local = "http://localhost:9000/.netlify/functions/server";
-    // const host = "https://ashishkaserver.netlify.app/.netlify/functions/server";
+    const localProxy = "/.netlify/functions/";
+    // const host = "/.netlify/functions/";
 
-    await fetch(local + "/yelp", {
+    await fetch(localProxy + "yelp", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify({
+        term: data.term,
+        location: data.location,
+        sortBy: data.sortBy,
+      }),
     })
       .then((response) => response.json())
       .then((data) => {
-        setReturnedBusinesses(data.body);
+        setReturnedBusinesses(data);
         console.log(data);
       });
+
+    // await fetch(host + "/", {
+    //   method: "GET",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //   });
   }
 
   return (
