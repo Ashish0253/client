@@ -12,7 +12,8 @@ export default function App() {
   async function searchYelp(term, location, sortBy) {
     var data = { term, location, sortBy };
 
-    const localProxy = "/.netlify/functions/";
+    const localProxy =
+      "https://ashish-ka-serverless-project.netlify.app/.netlify/functions/";
     // const host = "/.netlify/functions/";
 
     await fetch(localProxy + "yelp", {
