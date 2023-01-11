@@ -12,14 +12,13 @@ export default function App() {
   async function searchYelp(term, location, sortBy) {
     var data = { term, location, sortBy };
 
-    const localProxy = "http://localhost:8888/.netlify/functions/";
+    // const localProxy = "http://localhost:8888/.netlify/functions/";
     // const host = "/.netlify/functions/";
 
-    await fetch(localProxy + "yelp", {
+    await fetch("/.netlify/functions/yelp", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        // Origin: "http://localhost:3000",
       },
       body: JSON.stringify({
         term: data.term,
