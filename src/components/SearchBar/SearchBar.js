@@ -42,7 +42,7 @@ export default function SearchBar(props) {
         <li
           key={sortByOptionValue}
           className={getSortByClass(sortByOptionValue)}
-          onClick={handleSortByChange(sortByOptionValue)}
+          onClick={() => handleSortByChange(sortByOptionValue)}
         >
           {sortByOption}
         </li>
